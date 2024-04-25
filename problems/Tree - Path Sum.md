@@ -2,7 +2,7 @@ Given the `root` of a binary tree and an integer `targetSum`, return `true` if t
 
 **Example 1:**
 
-![image](../problems/images/pathsum1.jpg)
+![image](https://adeveloperdiary.com/algo_practice/problems/images/pathsum1.jpg)
 
 ```
 Input: root = [5,4,8,11,null,13,4,7,2,null,null,null,1], targetSum = 22
@@ -12,7 +12,7 @@ Explanation: The root-to-leaf path with the target sum is shown.
 
 **Example 2:**
 
-![image](../problems/images/pathsum2.jpg)
+![image](https://adeveloperdiary.com/algo_practice/problems/images/pathsum2.jpg)
 
 ```
 Input: root = [1,2,3], targetSum = 5

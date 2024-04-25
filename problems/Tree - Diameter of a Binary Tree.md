@@ -2,7 +2,7 @@ Given the `root` of a binary tree, return *the length of the **diameter** of the
 
 **Example 1:**
 
-![image](../problems/images/diamtree.jpg)
+![image](https://adeveloperdiary.com/algo_practice/problems/images/diamtree.jpg)
 
 ```
 Input: root = [1,2,3,4,5]

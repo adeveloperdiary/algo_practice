@@ -4,7 +4,7 @@ Given an integer array `nums` where the elements are sorted in **ascending order
 
 **Example 1:**
 
-![image](../problems/images/btree1.jpg)
+![image](https://adeveloperdiary.com/algo_practice/problems/images/btree1.jpg)
 
 ```
 Input: nums = [-10,-3,0,5,9]
@@ -12,11 +12,11 @@ Output: [0,-3,9,-10,null,5]
 Explanation: [0,-10,5,null,-3,null,9] is also accepted:
 ```
 
-![btree2](../problems/images/btree2.jpg)
+![btree2](https://adeveloperdiary.com/algo_practice/problems/images/btree2.jpg)
 
 **Example 2:**
 
-![btree](../problems/images/btree.jpg)
+![btree](https://adeveloperdiary.com/algo_practice/problems/images/btree.jpg)
 
 ```
 Input: nums = [1,3]

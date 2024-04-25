@@ -2,7 +2,7 @@ Given the `head` of a linked list and an integer `val`, remove all the nodes of 
 
 **Example 1:**
 
-![img](../problems/images/removelinked-list.jpg)
+![img](https://adeveloperdiary.com/algo_practice/problems/images/removelinked-list.jpg)
 
 ```
 Input: head = [1,2,6,3,4,5,6], val = 6

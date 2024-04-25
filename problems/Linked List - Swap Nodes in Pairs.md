@@ -2,7 +2,7 @@ Given a linked list, swap every two adjacent nodes and return its head. You must
 
 **Example 1:**
 
-![image](../problems/images/swap_ex1.jpg)
+![image](https://adeveloperdiary.com/algo_practice/problems/images/swap_ex1.jpg)
 
 ```
 Input: head = [1,2,3,4]

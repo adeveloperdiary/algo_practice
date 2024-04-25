@@ -2,7 +2,7 @@ Given two integer arrays `preorder` and `inorder` where `preorder` is the preord
 
 **Example 1:**
 
-![image](../problems/images/tree123.jpg)
+![image](https://adeveloperdiary.com/algo_practice/problems/images/tree123.jpg)
 
 ```
 Input: preorder = [3,9,20,15,7], inorder = [9,3,15,20,7]

@@ -2,7 +2,7 @@ Given the `head` of a linked list, reverse the nodes of the list `k` at a time, 
 
 **Example 1:**
 
-![image](../problems/images/reverse_ex1.jpg)
+![image](https://adeveloperdiary.com/algo_practice/problems/images/reverse_ex1.jpg)
 
 ```
 Input: head = [1,2,3,4,5], k = 2
@@ -11,7 +11,7 @@ Output: [2,1,4,3,5]
 
 **Example 2:**
 
-![reverse_ex2.jpg](../problems/images/reverse_ex2.jpg)
+![reverse_ex2.jpg](https://adeveloperdiary.com/algo_practice/problems/images/reverse_ex2.jpg)
 ```
 Input: head = [1,2,3,4,5], k = 3
 Output: [3,2,1,4,5]

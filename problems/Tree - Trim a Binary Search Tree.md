@@ -4,7 +4,7 @@ Return *the root of the trimmed binary search tree*. Note that the root may chan
 
 **Example 1:**
 
-![image](../problems/images/trim1.jpg)
+![image](https://adeveloperdiary.com/algo_practice/problems/images/trim1.jpg)
 
 ```
 Input: root = [1,0,2], low = 1, high = 2
@@ -13,7 +13,7 @@ Output: [1,null,2]
 
 **Example 2:**
 
-![image](../problems/images/trim2.jpg)
+![image](https://adeveloperdiary.com/algo_practice/problems/images/trim2.jpg)
 
 ```
 Input: root = [3,0,4,null,2,null,null,1], low = 1, high = 3

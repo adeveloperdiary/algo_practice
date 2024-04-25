@@ -8,7 +8,7 @@ A **valid BST** is defined as follows:
 
 **Example 1:**
 
-![image](../problems/images/tree1.jpg)
+![image](https://adeveloperdiary.com/algo_practice/problems/images/tree1.jpg)
 
 ```
 Input: root = [2,1,3]
@@ -17,7 +17,7 @@ Output: true
 
 **Example 2:**
 
-![btree](../problems/images/tree2.jpg)
+![btree](https://adeveloperdiary.com/algo_practice/problems/images/tree2.jpg)
 
 ```
 Input: root = [5,1,4,null,null,3,6]

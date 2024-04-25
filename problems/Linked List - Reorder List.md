@@ -14,7 +14,7 @@ You may not modify the values in the list's nodes. Only nodes themselves may be 
 
 **Example 1:**
 
-![img](../problems/images/reorder1linked-list.jpg)
+![img](https://adeveloperdiary.com/algo_practice/problems/images/reorder1linked-list.jpg)
 
 ```
 Input: head = [1,2,3,4]
@@ -23,7 +23,7 @@ Output: [1,4,2,3]
 
 **Example 2:**
 
-![img](../problems/images/reorder2-linked-list.jpg)
+![img](https://adeveloperdiary.com/algo_practice/problems/images/reorder2-linked-list.jpg)
 
 ```
 Input: head = [1,2,3,4,5]

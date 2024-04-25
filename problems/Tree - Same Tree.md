@@ -2,7 +2,7 @@ Given the roots of two binary trees `p` and `q`, write a function to check if th
 
 **Example 1:**
 
-![image](../problems/images/ex1.jpg)
+![image](https://adeveloperdiary.com/algo_practice/problems/images/ex1.jpg)
 
 ```
 Input: p = [1,2,3], q = [1,2,3]
@@ -11,7 +11,7 @@ Output: true
 
 **Example 2:**
 
-![image](../problems/images/ex2.jpg)
+![image](https://adeveloperdiary.com/algo_practice/problems/images/ex2.jpg)
 
 ```
 Input: p = [1,2], q = [1,null,2]
@@ -20,7 +20,7 @@ Output: false
 
 **Example 3:**
 
-![image](../problems/images/ex3.jpg)
+![image](https://adeveloperdiary.com/algo_practice/problems/images/ex3.jpg)
 
 ```
 Input: p = [1,2,1], q = [1,1,2]

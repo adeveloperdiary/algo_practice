@@ -5,7 +5,7 @@ Given the `root` of a binary tree, flatten the tree into a "linked list":
 
 **Example 1:**
 
-![image](../problems/images/flaten.jpg)
+![image](https://adeveloperdiary.com/algo_practice/problems/images/flaten.jpg)
 
 ```
 Input: root = [1,2,5,3,4,null,6]

@@ -4,7 +4,7 @@ You are given the `root` of a binary tree containing digits from `0` to `9` only
 
 **Example 1:**
 
-![image](../problems/images/tree1.jpg)
+![image](https://adeveloperdiary.com/algo_practice/problems/images/tree1.jpg)
 
 ```
 Input: root = [1,2,3]
@@ -17,7 +17,7 @@ Therefore, sum = 12 + 13 = 25.
 
 **Example 2:**
 
-![btree](../problems/images/num2tree.jpg)
+![btree](https://adeveloperdiary.com/algo_practice/problems/images/num2tree.jpg)
 
 ```
 Input: root = [4,9,0,5,1]

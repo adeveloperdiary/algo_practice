@@ -4,7 +4,7 @@ Design an algorithm to serialize and deserialize a binary tree. There is no rest
 
 **Example 1:**
 
-![image](../problems/images/serdeser.jpg)
+![image](https://adeveloperdiary.com/algo_practice/problems/images/serdeser.jpg)
 
 ```
 Input: root = [1,2,3,null,null,4,5]

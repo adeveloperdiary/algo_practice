@@ -4,7 +4,7 @@ You are given two binary trees `root1` and `root2`. Imagine that when you put on
 
 **Example 1:**
 
-![image](../problems/images/merge.jpg)
+![image](https://adeveloperdiary.com/algo_practice/problems/images/merge.jpg)
 
 ```
 Input: root1 = [1,3,2,5], root2 = [2,1,3,null,4,null,7]

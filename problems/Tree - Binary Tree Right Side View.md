@@ -2,7 +2,7 @@ Given the `root` of a binary tree, imagine yourself standing on the **right side
 
 **Example 1:**
 
-![image](../problems/images/tree.jpg)
+![image](https://adeveloperdiary.com/algo_practice/problems/images/tree.jpg)
 
 ```
 Input: root = [1,2,3,null,5,null,4]

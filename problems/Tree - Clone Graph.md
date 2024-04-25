@@ -11,7 +11,7 @@ class Node {
 
 **Example 1:**
 
-![image](../problems/images/133_clone_graph_question.jpg)
+![image](https://adeveloperdiary.com/algo_practice/problems/images/133_clone_graph_question.jpg)
 
 ```
 Input: adjList = [[2,4],[1,3],[2,4],[1,3]]

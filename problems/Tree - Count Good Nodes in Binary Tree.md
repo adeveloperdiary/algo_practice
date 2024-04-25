@@ -2,7 +2,7 @@ Given a binary tree `root`, a node *X* in the tree is named **good** if in the p
 
 **Example 1:**
 
-![image](../problems/images/test_sample_1.jpg)
+![image](https://adeveloperdiary.com/algo_practice/problems/images/test_sample_1.jpg)
 
 ```
 Input: root = [3,1,4,3,null,1,5]
@@ -16,7 +16,7 @@ Node 3 -> (3,1,3) is the maximum value in the path.
 
 **Example 2:**
 
-![image](../problems/images/test_sample_2.jpg)
+![image](https://adeveloperdiary.com/algo_practice/problems/images/test_sample_2.jpg)
 
 ```
 Input: root = [3,3,null,4,2]

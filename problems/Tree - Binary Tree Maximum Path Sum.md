@@ -4,7 +4,7 @@ The **path sum** of a path is the sum of the node's values in the path. Given th
 
 **Example 1:**
 
-![image](../problems/images/exx1.jpg)
+![image](https://adeveloperdiary.com/algo_practice/problems/images/exx1.jpg)
 
 ```
 Input: root = [1,2,3]
@@ -14,7 +14,7 @@ Explanation: The optimal path is 2 -> 1 -> 3 with a path sum of 2 + 1 + 3 = 6.
 
 **Example 2:**
 
-![image](../problems/images/exx2.jpg)
+![image](https://adeveloperdiary.com/algo_practice/problems/images/exx2.jpg)
 
 ```
 Input: root = [-10,9,20,null,null,15,7]

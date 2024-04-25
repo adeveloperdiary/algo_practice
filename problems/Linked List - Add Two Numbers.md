@@ -2,7 +2,7 @@ You are given two **non-empty** linked lists representing two non-negative integ
 
 **Example 1:**
 
-![image](../problems/images/addtwonumber1.jpg)
+![image](https://adeveloperdiary.com/algo_practice/problems/images/addtwonumber1.jpg)
 
 ```
 Input: l1 = [2,4,3], l2 = [5,6,4]
