@@ -52,7 +52,7 @@
                 }
                 $.ajax({
                     dataType: "text",
-                    url: "algo_practice/problems/"+name
+                    url: "/algo_practice/problems/"+name
                 }).done(function(text) {
                     const md = markdownit({
                       highlight: function (str, lang) {
