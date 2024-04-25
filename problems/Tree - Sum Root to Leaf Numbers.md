@@ -6,7 +6,7 @@ Return *the total sum of all root-to-leaf numbers*. Test cases are generated so 
 
 **Example 1:**
 
-![image](https://adeveloperdiary.com/algo_practice/problems/images/tree1.jpg)
+![image](https://adeveloperdiary.com/algo_practice/problems/images/exx1.jpg)
 
 ```
 Input: root = [1,2,3]
