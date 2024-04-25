@@ -1,0 +1,127 @@
+<!DOCTYPE html>
+<html lang="en" data-bs-theme="dark">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"
+            integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM"
+            crossorigin="anonymous"></script>
+
+    <link rel="stylesheet" type="text/css"
+          href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/5.3.0/css/bootstrap.min.css">
+
+    <script type="text/javascript" charset="utf8" src="https://code.jquery.com/jquery-3.7.0.js"></script>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/split.js/1.6.2/split.min.js" integrity="sha512-to2k78YjoNUq8+hnJS8AwFg/nrLRFLdYYalb18SlcsFRXavCOTfBF3lNyplKkLJeB8YjKVTb1FPHGSy9sXfSdg==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/ace/1.2.6/ace.js" type="text/javascript" charset="utf-8"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/highlight.min.js" integrity="sha512-D9gUyxqja7hBtkWpPWGt9wfbfaMGVt9gnyCvYa+jojwwPHLCzUm5i8rpk7vD7wNee9bA35eYIjobYPaQuKS1MQ==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/markdown-it/13.0.2/markdown-it.min.js" integrity="sha512-ohlWmsCxOu0bph1om5eDL0jm/83eH09fvqLDhiEdiqfDeJbEvz4FSbeY0gLJSVJwQAp0laRhTXbUQG+ZUuifUQ==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+
+    <script type="text/javascript">
+        var editor=null
+        var name=null
+        function getRandomInt(min, max) {
+            min = Math.ceil(min);
+            max = Math.floor(max);
+            return Math.floor(Math.random() * (max - min + 1)) + min;
+        }
+
+        $(document).keypress(function(event) {
+            if (event.which == 115 && (event.ctrlKey||event.metaKey)|| (event.which == 19)) {
+                event.preventDefault();
+                if (editor!=null && name!=null){
+                    localStorage.setItem(name,editor.getValue())
+                }                
+                return false;
+            }
+            return true;
+        });
+
+        $(document).ready(function () {
+            
+            $.getJSON("problem_lists.json",function(data){
+                id=getRandomInt(0,data.length-1)
+                name=data[id]
+                console.log(name)
+                if(name!=null){
+                    code=localStorage.getItem(name)
+                    if(editor!=null && code!=null){
+                        editor.setValue(code)
+                    }
+                }
+                $.ajax({
+                    dataType: "text",
+                    url: "/problems/"+name
+                }).done(function(text) {
+                    const md = markdownit({
+                      highlight: function (str, lang) {
+                        if (lang && hljs.getLanguage(lang)) {
+                          try {
+                            return '<pre><code class="hljs">' +
+                                   hljs.highlight(str, { language: lang, ignoreIllegals: true }).value +
+                                   '</code></pre>';
+                          } catch (__) {}
+                        }
+    
+                        return '<pre><code class="hljs">' + md.utils.escapeHtml(str) + '</code></pre>';
+                      }
+                    });
+                    document.getElementById('split-0').innerHTML = md.render(text)
+    
+                });
+                
+            })
+            
+            Split(['#split-0', '#split-1'])
+            $('#editor').css('height',($(document).height()-2)+"px")
+            editor = ace.edit("editor");
+            editor.session.setMode("ace/mode/python");
+            editor.setTheme("ace/theme/tomorrow_night");
+            editor.setOptions({
+                enableBasicAutocompletion: true,
+                enableSnippets: true
+            });
+
+            editor.setShowPrintMargin(false);
+            editor.setHighlightActiveLine(false);
+
+        });
+    </script>
+    <style>
+        #editor {
+            height:600px;
+            width:100%;
+            padding-right:0;
+            padding-left: 0;
+            vertical-align: top;
+            margin-top:10px
+        }
+        .split {
+            display: flex;
+            flex-direction: row;
+        }
+
+        .gutter {
+            background-color: #3f414a;
+            background-repeat: no-repeat;
+            background-position: 50%;
+        }
+
+        .gutter.gutter-horizontal {
+            background-image: url('data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAUAAAAeCAYAAADkftS9AAAAIklEQVQoU2M4c+bMfxAGAgYYmwGrIIiDjrELjpo5aiZeMwF+yNnOs5KSvgAAAABJRU5ErkJggg==');
+            cursor: col-resize;
+        }
+    </style>
+</head>
+<body>
+<div class="split">
+    <div id="split-0" style="padding:10px">
+
+    </div>
+    <div id="split-1">
+        <div id="editor"></div>
+    </div>
+</div>
+</body>
+</html>
