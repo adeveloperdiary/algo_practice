@@ -41,35 +41,55 @@
         $(document).ready(function () {
             
             $.getJSON("problem_lists.json",function(data){
-                id=getRandomInt(0,data.length-1)
-                name=data[id]
-                console.log(name)
-                if(name!=null){
-                    code=localStorage.getItem(name)
-                    if(editor!=null && code!=null){
-                        editor.setValue(code)
-                    }
-                }
-                $.ajax({
-                    dataType: "text",
-                    url: "https://adeveloperdiary.com/algo_practice/problems/"+name
-                }).done(function(text) {
-                    const md = markdownit({
-                      highlight: function (str, lang) {
-                        if (lang && hljs.getLanguage(lang)) {
-                          try {
-                            return '<pre><code class="hljs">' +
-                                   hljs.highlight(str, { language: lang, ignoreIllegals: true }).value +
-                                   '</code></pre>';
-                          } catch (__) {}
-                        }
-    
-                        return '<pre><code class="hljs">' + md.utils.escapeHtml(str) + '</code></pre>';
-                      }
+
+                const queryString = window.location.search
+                const urlParams = new URLSearchParams(queryString);
+                            
+                if (urlParams.has('list')){                
+                    list_data=''
+                    $.each(data,function(i,val){
+                        list_data+= i +".  "+val +" \n"
                     });
-                    document.getElementById('split-0').innerHTML = md.render(text)
-    
-                });
+                    const md = markdownit()
+                    document.getElementById('split-0').innerHTML = md.render(list_data)
+
+
+                }else{
+                    if (urlParams.has('id')){
+                        var id = urlParams.get('id')                          
+                        name=data[id]                      
+                    }else{                   
+                        id=getRandomInt(0,data.length-1)                    
+                        name=data[id]
+                    }
+                    console.log(name)
+                    if(name!=null){
+                        code=localStorage.getItem(name)
+                        if(editor!=null && code!=null){
+                            editor.setValue(code)
+                        }
+                    }
+                    $.ajax({
+                        dataType: "text",
+                        url: "https://adeveloperdiary.com/algo_practice/problems/"+name
+                    }).done(function(text) {
+                        const md = markdownit({
+                        highlight: function (str, lang) {
+                            if (lang && hljs.getLanguage(lang)) {
+                            try {
+                                return '<pre><code class="hljs">' +
+                                    hljs.highlight(str, { language: lang, ignoreIllegals: true }).value +
+                                    '</code></pre>';
+                            } catch (__) {}
+                            }
+        
+                            return '<pre><code class="hljs">' + md.utils.escapeHtml(str) + '</code></pre>';
+                        }
+                        });
+                        document.getElementById('split-0').innerHTML = md.render(text)
+        
+                    });
+                }
                 
             })
             
