@@ -73,7 +73,7 @@
                 url: "help.md"
             }).done(function(text) {                
                 const md = markdownit()                
-                help_text=md.render(list_data)
+                help_text=md.render(text)
             });
         
 
