@@ -19,6 +19,10 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/markdown-it/13.0.2/markdown-it.min.js" integrity="sha512-ohlWmsCxOu0bph1om5eDL0jm/83eH09fvqLDhiEdiqfDeJbEvz4FSbeY0gLJSVJwQAp0laRhTXbUQG+ZUuifUQ==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
 
     <script type="text/javascript">
+
+        var help_flag=false
+        var help_text=null
+        var old_problem=null
         var editor=null
         var name=null
         function getRandomInt(min, max) {
@@ -27,19 +31,52 @@
             return Math.floor(Math.random() * (max - min + 1)) + min;
         }
 
-        $(document).keypress(function(event) {
-            if (event.which == 115 && (event.ctrlKey||event.metaKey)|| (event.which == 19)) {
+        $(document).keypress(function(event) { 
+            console.log(event.which)           
+            if (event.which == 8) {
                 event.preventDefault();
+                console.log("hiding ...")
+                $('#problem').toggle()                
+                return false;
+            }
+            if (event.which == 11) {
+                event.preventDefault(); 
+                if(help_flag==false){                        
+                    old_problem=$('#problem').html()
+                    help_flag=true
+                    document.getElementById('problem').innerHTML=help_text
+                }else{
+                    if(help_flag==true){
+                        document.getElementById('problem').innerHTML=old_problem
+                        help_flag=false
+                    }
+                }
+
+                return false;
+            }  
+            if (event.which == 19) {
+                event.preventDefault();
+                console.log("Saving ...")
                 if (editor!=null && name!=null){
                     localStorage.setItem(name,editor.getValue())
                 }                
                 return false;
-            }
+            }            
+            
             return true;
         });
 
         $(document).ready(function () {
-            
+
+            $.ajax({
+                dataType: "text",
+                url: "help.md"
+            }).done(function(text) {                
+                const md = markdownit()                
+                help_text=md.render(list_data)
+            });
+        
+
             $.getJSON("problem_lists.json",function(data){
 
                 const queryString = window.location.search
@@ -51,7 +88,7 @@
                         list_data+= i +".  "+val +" \n"
                     });
                     const md = markdownit()
-                    document.getElementById('split-0').innerHTML = md.render(list_data)
+                    document.getElementById('problem').innerHTML = md.render(list_data)
 
 
                 }else{
@@ -86,7 +123,7 @@
                             return '<pre><code class="hljs">' + md.utils.escapeHtml(str) + '</code></pre>';
                         }
                         });
-                        document.getElementById('split-0').innerHTML = md.render(text)
+                        document.getElementById('problem').innerHTML = md.render(text)
         
                     });
                 }
@@ -137,7 +174,7 @@
 <body>
 <div class="split">
     <div id="split-0" style="padding:10px">
-
+        <div id="problem"></div>
     </div>
     <div id="split-1">
         <div id="editor"></div>
