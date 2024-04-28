@@ -10,3 +10,4 @@
 - Show this Help : `Ctrl + k`
 - Save Code : `Ctrl + s`
 - Hide/Show Problem : `Ctrl + h`
+- Change Editor Theme : `Ctrl + t`

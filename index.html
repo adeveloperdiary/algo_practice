@@ -1,68 +1,102 @@
 <!DOCTYPE html>
 <html lang="en" data-bs-theme="dark">
+
 <head>
     <meta charset="UTF-8">
     <title>Title</title>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"
-            integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM"
-            crossorigin="anonymous"></script>
+        integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM"
+        crossorigin="anonymous"></script>
 
     <link rel="stylesheet" type="text/css"
-          href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/5.3.0/css/bootstrap.min.css">
+        href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/5.3.0/css/bootstrap.min.css">
 
     <script type="text/javascript" charset="utf8" src="https://code.jquery.com/jquery-3.7.0.js"></script>
 
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/split.js/1.6.2/split.min.js" integrity="sha512-to2k78YjoNUq8+hnJS8AwFg/nrLRFLdYYalb18SlcsFRXavCOTfBF3lNyplKkLJeB8YjKVTb1FPHGSy9sXfSdg==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/split.js/1.6.2/split.min.js"
+        integrity="sha512-to2k78YjoNUq8+hnJS8AwFg/nrLRFLdYYalb18SlcsFRXavCOTfBF3lNyplKkLJeB8YjKVTb1FPHGSy9sXfSdg=="
+        crossorigin="anonymous" referrerpolicy="no-referrer"></script>
 
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/ace/1.2.6/ace.js" type="text/javascript" charset="utf-8"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/highlight.min.js" integrity="sha512-D9gUyxqja7hBtkWpPWGt9wfbfaMGVt9gnyCvYa+jojwwPHLCzUm5i8rpk7vD7wNee9bA35eYIjobYPaQuKS1MQ==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/markdown-it/13.0.2/markdown-it.min.js" integrity="sha512-ohlWmsCxOu0bph1om5eDL0jm/83eH09fvqLDhiEdiqfDeJbEvz4FSbeY0gLJSVJwQAp0laRhTXbUQG+ZUuifUQ==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/ace/1.2.6/ace.js" type="text/javascript"
+        charset="utf-8"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/highlight.min.js"
+        integrity="sha512-D9gUyxqja7hBtkWpPWGt9wfbfaMGVt9gnyCvYa+jojwwPHLCzUm5i8rpk7vD7wNee9bA35eYIjobYPaQuKS1MQ=="
+        crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/markdown-it/13.0.2/markdown-it.min.js"
+        integrity="sha512-ohlWmsCxOu0bph1om5eDL0jm/83eH09fvqLDhiEdiqfDeJbEvz4FSbeY0gLJSVJwQAp0laRhTXbUQG+ZUuifUQ=="
+        crossorigin="anonymous" referrerpolicy="no-referrer"></script>
 
     <script type="text/javascript">
 
-        var help_flag=false
-        var help_text=null
-        var old_problem=null
-        var editor=null
-        var name=null
+        var help_flag = false
+        var help_text = null
+        var old_problem = null
+        var editor = null
+        var name = null
         function getRandomInt(min, max) {
             min = Math.ceil(min);
             max = Math.floor(max);
             return Math.floor(Math.random() * (max - min + 1)) + min;
         }
 
-        $(document).keypress(function(event) { 
-            console.log(event.which)           
+        themes = ['ambiance', 'chaos', 'clouds_midnight', 'cobalt', 'dracula', 'gob', 'gruvbox', 'idle_fingers',
+            'kr_theme',
+            'merbivore',
+            'merbivore_soft',
+            'mono_industrial',
+            'monokai',
+            'pastel_on_dark',
+            'solarized_dark',
+            'terminal',
+            'tomorrow_night',
+            'tomorrow_night_blue',
+            'tomorrow_night_bright',
+            'tomorrow_night_eighties',
+            'twilight',
+            'vibrant_ink']
+        
+            theme_number = 16
+
+        $(document).keypress(function (event) {            
+            if (event.which == 20) {
+                event.preventDefault();
+                theme_number+=1
+                if(theme_number>themes.length){
+                    theme_number=0
+                }
+                editor.setTheme("ace/theme/"+themes[theme_number])                
+                return false;
+            }
             if (event.which == 8) {
                 event.preventDefault();
                 console.log("hiding ...")
-                $('#problem').toggle()                
+                $('#problem').toggle()
                 return false;
             }
             if (event.which == 11) {
-                event.preventDefault(); 
-                if(help_flag==false){                        
-                    old_problem=$('#problem').html()
-                    help_flag=true
-                    document.getElementById('problem').innerHTML=help_text
-                }else{
-                    if(help_flag==true){
-                        document.getElementById('problem').innerHTML=old_problem
-                        help_flag=false
+                event.preventDefault();
+                if (help_flag == false) {
+                    old_problem = $('#problem').html()
+                    help_flag = true
+                    document.getElementById('problem').innerHTML = help_text
+                } else {
+                    if (help_flag == true) {
+                        document.getElementById('problem').innerHTML = old_problem
+                        help_flag = false
                     }
                 }
 
                 return false;
-            }  
+            }
             if (event.which == 19) {
                 event.preventDefault();
                 console.log("Saving ...")
-                if (editor!=null && name!=null){
-                    localStorage.setItem(name,editor.getValue())
-                }                
+                if (editor != null && name != null) {
+                    localStorage.setItem(name, editor.getValue())
+                }
                 return false;
-            }            
-            
+            }
+
             return true;
         });
 
@@ -71,67 +105,67 @@
             $.ajax({
                 dataType: "text",
                 url: "help.md"
-            }).done(function(text) {                
-                const md = markdownit()                
-                help_text=md.render(text)
+            }).done(function (text) {
+                const md = markdownit()
+                help_text = md.render(text)
             });
-        
 
-            $.getJSON("problem_lists.json",function(data){
+
+            $.getJSON("problem_lists.json", function (data) {
 
                 const queryString = window.location.search
                 const urlParams = new URLSearchParams(queryString);
-                            
-                if (urlParams.has('list')){                
-                    list_data=''
-                    $.each(data,function(i,val){
-                        list_data+= i +".  "+val +" \n"
+
+                if (urlParams.has('list')) {
+                    list_data = ''
+                    $.each(data, function (i, val) {
+                        list_data += i + ".  " + val + " \n"
                     });
                     const md = markdownit()
                     document.getElementById('problem').innerHTML = md.render(list_data)
 
 
-                }else{
-                    if (urlParams.has('id')){
-                        var id = urlParams.get('id')                          
-                        name=data[id]                      
-                    }else{                   
-                        id=getRandomInt(0,data.length-1)                    
-                        name=data[id]
+                } else {
+                    if (urlParams.has('id')) {
+                        var id = urlParams.get('id')
+                        name = data[id]
+                    } else {
+                        id = getRandomInt(0, data.length - 1)
+                        name = data[id]
                     }
                     console.log(name)
-                    if(name!=null){
-                        code=localStorage.getItem(name)
-                        if(editor!=null && code!=null){
+                    if (name != null) {
+                        code = localStorage.getItem(name)
+                        if (editor != null && code != null) {
                             editor.setValue(code)
                         }
                     }
                     $.ajax({
                         dataType: "text",
-                        url: "https://adeveloperdiary.com/algo_practice/problems/"+name
-                    }).done(function(text) {
+                        url: "https://adeveloperdiary.com/algo_practice/problems/" + name
+                    }).done(function (text) {
                         const md = markdownit({
-                        highlight: function (str, lang) {
-                            if (lang && hljs.getLanguage(lang)) {
-                            try {
-                                return '<pre><code class="hljs">' +
-                                    hljs.highlight(str, { language: lang, ignoreIllegals: true }).value +
-                                    '</code></pre>';
-                            } catch (__) {}
+                            highlight: function (str, lang) {
+                                if (lang && hljs.getLanguage(lang)) {
+                                    try {
+                                        return '<pre><code class="hljs">' +
+                                            hljs.highlight(str, { language: lang, ignoreIllegals: true }).value +
+                                            '</code></pre>';
+                                    } catch (__) { }
+                                }
+
+                                return '<pre><code class="hljs">' + md.utils.escapeHtml(str) + '</code></pre>';
                             }
-        
-                            return '<pre><code class="hljs">' + md.utils.escapeHtml(str) + '</code></pre>';
-                        }
                         });
                         document.getElementById('problem').innerHTML = md.render(text)
-        
+
                     });
                 }
-                
+
             })
-            
+
             Split(['#split-0', '#split-1'])
-            $('#editor').css('height',($(document).height()-2)+"px")
+            $('#editor').css('height', ($(document).height() - 2) + "px")
             editor = ace.edit("editor");
             editor.session.setMode("ace/mode/python");
             editor.setTheme("ace/theme/tomorrow_night");
@@ -147,13 +181,14 @@
     </script>
     <style>
         #editor {
-            height:600px;
-            width:100%;
-            padding-right:0;
+            height: 600px;
+            width: 100%;
+            padding-right: 0;
             padding-left: 0;
             vertical-align: top;
-            margin-top:10px
+            margin-top: 10px
         }
+
         .split {
             display: flex;
             flex-direction: row;
@@ -171,14 +206,16 @@
         }
     </style>
 </head>
+
 <body>
-<div class="split">
-    <div id="split-0" style="padding:10px">
-        <div id="problem"></div>
+    <div class="split">
+        <div id="split-0" style="padding:10px">
+            <div id="problem"></div>
+        </div>
+        <div id="split-1">
+            <div id="editor"></div>
+        </div>
     </div>
-    <div id="split-1">
-        <div id="editor"></div>
-    </div>
-</div>
 </body>
+
 </html>
